@@ -31,11 +31,7 @@ export const BrandLogo: React.FC<BrandLogoProps> = ({
       >
         <span>ស</span>
       </div> */}
-      <img
-        src="/public/sastra-noText.png"
-        alt="Sastra AI"
-        className="h-10 w-auto"
-      />
+      <img src="/sastra-noText.png" alt="Sastra AI" className="h-10 w-auto" />
 
       {/* Brand Text */}
       <div
