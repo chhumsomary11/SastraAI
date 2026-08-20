@@ -1,0 +1,79 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --font-en: 'Plus Jakarta Sans', 'Manrope', system-ui, -apple-system, sans-serif;
+    --font-km: 'Noto Sans Khmer', 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  }
+
+  body {
+    font-family: var(--font-en);
+    background-color: #FAFBF7;
+    color: #0C2F23;
+  }
+
+  /* When Khmer language is active */
+  body.lang-km, [lang="km"] {
+    font-family: var(--font-km);
+  }
+
+  /* Custom subtle scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #FAFBF7;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #D8E4D6;
+    border-radius: 4px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #B6CDB3;
+  }
+}
+
+/* Utilities for editorial design */
+.font-display {
+  font-family: var(--font-en);
+  letter-spacing: -0.025em;
+}
+
+.lang-km .font-display {
+  font-family: var(--font-km);
+  letter-spacing: normal;
+  line-height: 1.35;
+}
+
+@keyframes pulse-subtle {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.75;
+    transform: scale(1.08);
+  }
+}
+
+.animate-pulse-subtle {
+  animation: pulse-subtle 3s ease-in-out infinite;
+}
+
+@keyframes float-slow {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+.animate-float-slow {
+  animation: float-slow 4s ease-in-out infinite;
+}
+
+.animate-float-reverse {
+  animation: float-slow 4.5s ease-in-out infinite reverse;
+}

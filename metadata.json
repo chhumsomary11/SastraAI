@@ -1,0 +1,6 @@
+{
+  "name": "Sastra AI",
+  "description": "An AI home tutor landing page for Cambodian students in Grades 1–12, offering guided math and science homework assistance in Khmer.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
