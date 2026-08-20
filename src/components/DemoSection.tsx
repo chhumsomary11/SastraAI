@@ -23,7 +23,7 @@ export const DemoSection: React.FC<DemoSectionProps> = ({
       {/* Subtle background ambient pattern */}
       <div className="absolute inset-0 opacity-5 pointer-events-none bg-[radial-gradient(#B7EF45_1px,transparent_1px)] [background-size:24px_24px]" />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className="section-container relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-14 items-center">
           
           {/* Left Column: Copy & Notes */}
@@ -78,7 +78,7 @@ export const DemoSection: React.FC<DemoSectionProps> = ({
               <div className="relative my-auto flex items-center justify-center py-4 z-10">
                 
                 {/* Tilted Homework Card Representation */}
-                <div className="w-full max-w-[260px] sm:max-w-[310px] bg-white rounded-2xl p-4 sm:p-5 border-2 border-[#1F4B38] shadow-lg transform -rotate-2 transition-transform duration-300 group-hover:rotate-0">
+                <div className="w-full max-w-[320px] sm:max-w-[420px] bg-white rounded-2xl p-5 sm:p-6 border-2 border-[#1F4B38] shadow-lg transform -rotate-2 transition-transform duration-300 group-hover:rotate-0">
                   <div className="text-[10px] sm:text-[11px] font-extrabold tracking-wider text-[#638773] uppercase mb-1">
                     {t.demo.homeworkCardTag}
                   </div>

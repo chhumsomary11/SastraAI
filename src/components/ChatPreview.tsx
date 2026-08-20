@@ -25,7 +25,7 @@ export const ChatPreview: React.FC<ChatPreviewProps> = ({ currentLang, t }) => {
       id="chat-preview"
       className="w-full bg-[#FAFBF7] py-20 sm:py-28 relative border-t border-[#EAEFE8]"
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="section-container">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-14 items-center">
           
           {/* Left Column: Information & Concept Note */}
@@ -37,7 +37,7 @@ export const ChatPreview: React.FC<ChatPreviewProps> = ({ currentLang, t }) => {
               <div>{t.chatPreview.titleLine2}</div>
             </h2>
 
-            <p className="text-base sm:text-lg text-[#526D5F] leading-relaxed max-w-md">
+            <p className="text-base sm:text-lg text-[#526D5F] leading-relaxed max-w-lg">
               {t.chatPreview.description}
             </p>
 
@@ -53,7 +53,7 @@ export const ChatPreview: React.FC<ChatPreviewProps> = ({ currentLang, t }) => {
 
           {/* Right Column: Chatbot Interface Card */}
           <div className="lg:col-span-7">
-            <div className="w-full max-w-xl mx-auto bg-white rounded-3xl border border-[#D8E4D6] shadow-[0_15px_40px_-10px_rgba(12,47,35,0.06)] overflow-hidden flex flex-col justify-between min-h-[480px]">
+            <div className="w-full max-w-2xl mx-auto bg-white rounded-3xl border border-[#D8E4D6] shadow-[0_15px_40px_-10px_rgba(12,47,35,0.06)] overflow-hidden flex flex-col justify-between min-h-[520px]">
               
               {/* Chat Card Header */}
               <div className="px-6 py-4 border-b border-[#EAF2E8] flex items-center justify-between bg-white">

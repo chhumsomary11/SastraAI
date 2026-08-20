@@ -9,7 +9,7 @@ interface PhoneMockupProps {
 
 export const PhoneMockup: React.FC<PhoneMockupProps> = ({ currentLang, t }) => {
   return (
-    <div className="relative mx-auto w-full max-w-[290px] sm:max-w-[320px] select-none">
+    <div className="relative mx-auto w-full max-w-[320px] sm:max-w-[380px] lg:max-w-[410px] select-none">
       {/* Outer Phone Shell */}
       <div className="relative rounded-[46px] p-[10px] bg-gradient-to-b from-[#253830] via-[#10221A] to-[#081510] shadow-[0_25px_60px_-15px_rgba(12,47,35,0.4),0_0_0_1px_rgba(255,255,255,0.15)] ring-1 ring-black/40">
         

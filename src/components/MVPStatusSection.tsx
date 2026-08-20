@@ -17,7 +17,7 @@ export const MVPStatusSection: React.FC<MVPStatusSectionProps> = ({
       id="mvp-status"
       className="w-full bg-[#EAF3E5] py-20 sm:py-28 relative border-t border-[#DDE8D9]"
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="section-container">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-14 items-center">
           
           {/* Left Column: Heading */}

@@ -1,7 +1,7 @@
-import React from 'react';
-import { Play, Check, Sparkles } from 'lucide-react';
-import { PhoneMockup } from './PhoneMockup';
-import { Language, TranslationContent } from '../types';
+import React from "react";
+import { Play, Check, Sparkles } from "lucide-react";
+import { PhoneMockup } from "./PhoneMockup";
+import { Language, TranslationContent } from "../types";
 
 interface HeroSectionProps {
   currentLang: Language;
@@ -21,17 +21,15 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
       id="hero"
       className="relative pt-6 sm:pt-10 md:pt-14 pb-16 sm:pb-24 lg:pb-28 overflow-hidden"
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
-          
+      <div className="section-container">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-14 lg:gap-16 items-center">
           {/* Left Column: Headlines & CTAs */}
           <div className="lg:col-span-7 space-y-6 sm:space-y-8 z-10">
-            
             {/* Status Pill */}
-            <div className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-[#EAF3E5] border border-[#D5E6D2] text-[#1B5E39] text-xs sm:text-[13px] font-medium shadow-2xs">
+            {/* <div className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-[#EAF3E5] border border-[#D5E6D2] text-[#1B5E39] text-xs sm:text-[13px] font-medium shadow-2xs">
               <span className="w-2 h-2 rounded-full bg-[#3FB864] animate-pulse-subtle" />
               <span>{t.hero.statusBadge}</span>
-            </div>
+            </div> */}
 
             {/* Main Headline */}
             <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-[68px] font-extrabold tracking-[-0.03em] leading-[1.08] text-[#0C2F23]">
@@ -41,7 +39,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
             </h1>
 
             {/* Supporting Description */}
-            <p className="text-base sm:text-lg md:text-[19px] text-[#4E6659] leading-relaxed max-w-xl">
+            <p className="text-base sm:text-lg md:text-[19px] text-[#4E6659] leading-relaxed max-w-2xl">
               {t.hero.description}
             </p>
 
@@ -76,12 +74,10 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
               </div>
               <span>{t.hero.gradeTarget}</span>
             </div>
-
           </div>
 
           {/* Right Column: Phone Mockup & Floating Cards */}
           <div className="lg:col-span-5 relative flex justify-center items-center pt-6 lg:pt-0">
-            
             {/* Pale Green Circular Background */}
             <div className="absolute w-[340px] sm:w-[420px] md:w-[460px] h-[340px] sm:h-[420px] md:h-[460px] rounded-full bg-gradient-to-tr from-[#E1F1DC] via-[#EAF5E7] to-[#F1F8EE] -z-10 shadow-inner border border-[#D5E9D2]/70" />
 
@@ -121,11 +117,8 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                   </div>
                 </div>
               </div>
-
             </div>
-
           </div>
-
         </div>
       </div>
     </section>

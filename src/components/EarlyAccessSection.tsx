@@ -78,7 +78,7 @@ export const EarlyAccessSection: React.FC<EarlyAccessSectionProps> = ({
 
   return (
     <section id="early-access" className="w-full bg-[#FAFBF7] py-16 sm:py-24">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="section-container">
         
         {/* Big Dark Forest Green Rounded Panel */}
         <div className="w-full bg-[#0C2F23] rounded-[32px] sm:rounded-[40px] p-8 sm:p-14 lg:p-18 text-white relative overflow-hidden shadow-2xl border border-[#1C4E3A]">

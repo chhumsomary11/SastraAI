@@ -69,7 +69,7 @@ export const Header: React.FC<HeaderProps> = ({
           : 'bg-[#FAFBF7] py-5 sm:py-6'
       }`}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="section-container">
         <div className="flex items-center justify-between">
           {/* Logo */}
           <a

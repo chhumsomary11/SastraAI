@@ -1,4 +1,4 @@
-export type Language = 'en' | 'km';
+export type Language = "en" | "km";
 
 export interface TranslationContent {
   nav: {
@@ -47,7 +47,7 @@ export interface TranslationContent {
       number: string;
       title: string;
       description: string;
-      iconType: 'bolt' | 'khmer' | 'sparkle' | 'check';
+      iconType: "bolt" | "khmer" | "sparkle" | "check";
     }>;
   };
   chatPreview: {
@@ -75,7 +75,7 @@ export interface TranslationContent {
     cards: Array<{
       title: string;
       description: string;
-      iconType: 'khmer' | 'arrow' | 'home';
+      iconType: "khmer" | "arrow" | "home";
     }>;
   };
   mvpStatus: {

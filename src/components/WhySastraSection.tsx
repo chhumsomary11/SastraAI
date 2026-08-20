@@ -34,7 +34,7 @@ export const WhySastraSection: React.FC<WhySastraSectionProps> = ({
       id="why-sastra"
       className="w-full bg-[#FAFBF7] py-20 sm:py-28 relative"
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="section-container">
         
         {/* Header Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-end mb-14 sm:mb-18">

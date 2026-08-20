@@ -36,7 +36,7 @@ export const HowItWorksSection: React.FC<HowItWorksSectionProps> = ({
       id="how-it-works"
       className="w-full bg-[#FAFBF7] py-20 sm:py-28 relative"
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="section-container">
         
         {/* Section Header */}
         <div className="max-w-3xl mb-12 sm:mb-16">
