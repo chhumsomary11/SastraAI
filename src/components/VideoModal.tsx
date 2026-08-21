@@ -1,6 +1,13 @@
-import React, { useEffect, useState } from 'react';
-import { X, Play, RotateCcw, Volume2, VolumeX, CheckCircle2 } from 'lucide-react';
-import { Language, TranslationContent } from '../types';
+import React, { useEffect, useState } from "react";
+import {
+  X,
+  Play,
+  RotateCcw,
+  Volume2,
+  VolumeX,
+  CheckCircle2,
+} from "lucide-react";
+import { Language, TranslationContent } from "../types";
 
 interface VideoModalProps {
   isOpen: boolean;
@@ -30,21 +37,21 @@ export const VideoModal: React.FC<VideoModalProps> = ({
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') {
+      if (e.key === "Escape") {
         onClose();
       }
     };
 
     if (isOpen) {
-      document.body.style.overflow = 'hidden';
-      window.addEventListener('keydown', handleKeyDown);
+      document.body.style.overflow = "hidden";
+      window.addEventListener("keydown", handleKeyDown);
     } else {
-      document.body.style.overflow = 'unset';
+      document.body.style.overflow = "unset";
     }
 
     return () => {
-      document.body.style.overflow = 'unset';
-      window.removeEventListener('keydown', handleKeyDown);
+      document.body.style.overflow = "unset";
+      window.removeEventListener("keydown", handleKeyDown);
     };
   }, [isOpen, onClose]);
 
@@ -102,7 +109,6 @@ export const VideoModal: React.FC<VideoModalProps> = ({
 
         {/* Video Player Canvas */}
         <div className="relative aspect-video bg-[#071B14] flex flex-col justify-between p-6 sm:p-8 overflow-hidden">
-          
           {customVideoUrl ? (
             /* Custom Embed if provided */
             <iframe
@@ -115,7 +121,6 @@ export const VideoModal: React.FC<VideoModalProps> = ({
           ) : (
             /* High-fidelity interactive animated lesson walkthrough */
             <div className="h-full flex flex-col justify-between z-10">
-              
               {/* Question Badge */}
               <div className="flex items-center justify-between">
                 <div className="bg-[#173F2E] text-[#B7EF45] text-xs font-semibold px-3 py-1 rounded-full border border-[#2D694E] flex items-center gap-1.5">
@@ -123,31 +128,39 @@ export const VideoModal: React.FC<VideoModalProps> = ({
                   {t.videoModal.lessonGrade}
                 </div>
                 <div className="text-xs text-[#8AA89B] font-mono">
-                  00:{String(currentStep * 15).padStart(2, '0')} / 01:00
+                  00:{String(currentStep * 15).padStart(2, "0")} / 01:00
                 </div>
               </div>
 
               {/* Dynamic Lesson Walkthrough Stage */}
               <div className="my-auto space-y-4 max-w-xl mx-auto w-full">
-                
                 {/* Homework Problem Container */}
                 <div className="bg-white/10 backdrop-blur-md rounded-2xl p-4 sm:p-5 border border-white/15">
                   <div className="text-xs uppercase tracking-wider text-[#A1C9B3] font-bold mb-1">
-                    {currentLang === 'km' ? 'លំហាត់គណិតវិទ្យាភាសាអង់គ្លេស' : 'English Math Homework'}
+                    {currentLang === "km"
+                      ? "លំហាត់គណិតវិទ្យាភាសាអង់គ្លេស"
+                      : "English Math Homework"}
                   </div>
                   <div className="text-base sm:text-lg font-bold text-white mb-2">
-                    "Find the area of a rectangle with length = 8 cm and width = 5 cm."
+                    "Find the area of a rectangle with length = 8 cm and width =
+                    5 cm."
                   </div>
 
                   {/* Diagram Representation */}
                   <div className="flex items-center justify-center py-2">
                     <div className="relative w-44 h-24 rounded-lg bg-[#EAF3E5]/90 border-2 border-[#20834D] flex items-center justify-center shadow-inner">
                       <span className="text-[11px] font-bold text-[#0C2F23]">
-                        {currentLang === 'km' ? 'ផ្ទៃក្រឡា (Area = ?)' : 'Area = ?'}
+                        {currentLang === "km"
+                          ? "ផ្ទៃក្រឡា (Area = ?)"
+                          : "Area = ?"}
                       </span>
                       {/* Dimension labels */}
-                      <span className="absolute -top-5 text-[11px] font-semibold text-[#B7EF45]">8 cm (Length)</span>
-                      <span className="absolute -right-14 text-[11px] font-semibold text-[#B7EF45]">5 cm (Width)</span>
+                      <span className="absolute -top-5 text-[11px] font-semibold text-[#B7EF45]">
+                        8 cm (Length)
+                      </span>
+                      <span className="absolute -right-14 text-[11px] font-semibold text-[#B7EF45]">
+                        5 cm (Width)
+                      </span>
                     </div>
                   </div>
                 </div>
@@ -157,21 +170,44 @@ export const VideoModal: React.FC<VideoModalProps> = ({
                   <div className="flex items-center gap-2 text-[#7CDAA0] font-bold">
                     <CheckCircle2 className="w-4 h-4 text-[#B7EF45]" />
                     <span>
-                      {currentStep === 0 && (currentLang === 'km' ? 'ជំហានទី ១៖ កំណត់ទិន្នន័យ (Length = 8 cm, Width = 5 cm)' : 'Step 1: Identify given values (Length = 8 cm, Width = 5 cm)')}
-                      {currentStep === 1 && (currentLang === 'km' ? 'ជំហានទី ២៖ អនុវត្តរូបមន្តគណិតវិទ្យា' : 'Step 2: Apply the geometric formula')}
-                      {currentStep === 2 && (currentLang === 'km' ? 'ជំហានទី ៣៖ គណនាលទ្ធផល 8 × 5 = 40' : 'Step 3: Calculate the product 8 × 5 = 40')}
-                      {currentStep >= 3 && (currentLang === 'km' ? 'រួចរាល់! ចម្លើយគឺ 40 cm² (សាកល្បងលំហាត់បន្ទាប់)' : 'Completed! Final answer is 40 cm²')}
+                      {currentStep === 0 &&
+                        (currentLang === "km"
+                          ? "ជំហានទី ១៖ កំណត់ទិន្នន័យ (Length = 8 cm, Width = 5 cm)"
+                          : "Step 1: Identify given values (Length = 8 cm, Width = 5 cm)")}
+                      {currentStep === 1 &&
+                        (currentLang === "km"
+                          ? "ជំហានទី ២៖ អនុវត្តរូបមន្តគណិតវិទ្យា"
+                          : "Step 2: Apply the geometric formula")}
+                      {currentStep === 2 &&
+                        (currentLang === "km"
+                          ? "ជំហានទី ៣៖ គណនាលទ្ធផល 8 × 5 = 40"
+                          : "Step 3: Calculate the product 8 × 5 = 40")}
+                      {currentStep >= 3 &&
+                        (currentLang === "km"
+                          ? "រួចរាល់! ចម្លើយគឺ 40 cm² (សាកល្បងលំហាត់បន្ទាប់)"
+                          : "Completed! Final answer is 40 cm²")}
                     </span>
                   </div>
 
                   <p className="text-[#CFE3D8] font-['Noto_Sans_Khmer',sans-serif] leading-relaxed">
-                    {currentStep === 0 && (currentLang === 'km' ? 'សាស្ត្រាពន្យល់៖ "បណ្តោយ" (Length) គឺ 8 cm និង "ទទឹង" (Width) គឺ 5 cm។' : 'Sastra AI guides: "Length" is 8 cm and "Width" is 5 cm.')}
-                    {currentStep === 1 && (currentLang === 'km' ? 'រូបមន្តផ្ទៃក្រឡាចតុកោណកែងគឺ៖ ផ្ទៃក្រឡា (Area) = បណ្តោយ (Length) × ទទឹង (Width)។' : 'The formula for area is: Area = length × width.')}
-                    {currentStep === 2 && (currentLang === 'km' ? 'យើងយក 8 cm គុណនឹង 5 cm = 40 cm²។ ឯកតានៃផ្ទៃក្រឡាគឺ សង់ទីម៉ែត្រការ៉េ (cm²)។' : 'We compute 8 cm × 5 cm = 40 cm². Remember the unit is square centimeters (cm²).')}
-                    {currentStep >= 3 && (currentLang === 'km' ? 'អបអរសាទរ! ប្អូនបានយល់ពីរបៀបដោះស្រាយហើយ។ តោះសាកល្បងលំហាត់វិទ្យាសាស្ត្របន្ទាប់។' : 'Great job! You learned the method step-by-step without skipping directly to shortcuts.')}
+                    {currentStep === 0 &&
+                      (currentLang === "km"
+                        ? 'សាស្ត្រាពន្យល់៖ "បណ្តោយ" (Length) គឺ 8 cm និង "ទទឹង" (Width) គឺ 5 cm។'
+                        : 'Sastra AI guides: "Length" is 8 cm and "Width" is 5 cm.')}
+                    {currentStep === 1 &&
+                      (currentLang === "km"
+                        ? "រូបមន្តផ្ទៃក្រឡាចតុកោណកែងគឺ៖ ផ្ទៃក្រឡា (Area) = បណ្តោយ (Length) × ទទឹង (Width)។"
+                        : "The formula for area is: Area = length × width.")}
+                    {currentStep === 2 &&
+                      (currentLang === "km"
+                        ? "យើងយក 8 cm គុណនឹង 5 cm = 40 cm²។ ឯកតានៃផ្ទៃក្រឡាគឺ សង់ទីម៉ែត្រការ៉េ (cm²)។"
+                        : "We compute 8 cm × 5 cm = 40 cm². Remember the unit is square centimeters (cm²).")}
+                    {currentStep >= 3 &&
+                      (currentLang === "km"
+                        ? "អបអរសាទរ! ប្អូនបានយល់ពីរបៀបដោះស្រាយហើយ។ តោះសាកល្បងលំហាត់វិទ្យាសាស្ត្របន្ទាប់។"
+                        : "Great job! You learned the method step-by-step without skipping directly to shortcuts.")}
                   </p>
                 </div>
-
               </div>
 
               {/* Video Timeline & Controls */}
@@ -189,9 +225,11 @@ export const VideoModal: React.FC<VideoModalProps> = ({
                       type="button"
                       onClick={() => setIsPlaying(!isPlaying)}
                       className="p-1.5 rounded-lg bg-white/10 hover:bg-white/20 text-white cursor-pointer"
-                      aria-label={isPlaying ? 'Pause' : 'Play'}
+                      aria-label={isPlaying ? "Pause" : "Play"}
                     >
-                      <Play className={`w-3.5 h-3.5 ${isPlaying ? 'fill-white' : ''}`} />
+                      <Play
+                        className={`w-3.5 h-3.5 ${isPlaying ? "fill-white" : ""}`}
+                      />
                     </button>
                     <button
                       type="button"
@@ -205,9 +243,13 @@ export const VideoModal: React.FC<VideoModalProps> = ({
                       type="button"
                       onClick={() => setIsMuted(!isMuted)}
                       className="p-1.5 rounded-lg bg-white/10 hover:bg-white/20 text-white cursor-pointer"
-                      aria-label={isMuted ? 'Unmute' : 'Mute'}
+                      aria-label={isMuted ? "Unmute" : "Mute"}
                     >
-                      {isMuted ? <VolumeX className="w-3.5 h-3.5" /> : <Volume2 className="w-3.5 h-3.5" />}
+                      {isMuted ? (
+                        <VolumeX className="w-3.5 h-3.5" />
+                      ) : (
+                        <Volume2 className="w-3.5 h-3.5" />
+                      )}
                     </button>
                   </div>
 
@@ -216,10 +258,8 @@ export const VideoModal: React.FC<VideoModalProps> = ({
                   </span>
                 </div>
               </div>
-
             </div>
           )}
-
         </div>
       </div>
     </div>

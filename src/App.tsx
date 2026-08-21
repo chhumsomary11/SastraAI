@@ -1,28 +1,28 @@
-import React, { useState, useEffect } from 'react';
-import { Header } from './components/Header';
-import { HeroSection } from './components/HeroSection';
-import { DemoSection } from './components/DemoSection';
-import { HowItWorksSection } from './components/HowItWorksSection';
-import { ChatPreview } from './components/ChatPreview';
-import { WhySastraSection } from './components/WhySastraSection';
-import { MVPStatusSection } from './components/MVPStatusSection';
-import { EarlyAccessSection } from './components/EarlyAccessSection';
-import { Footer } from './components/Footer';
-import { VideoModal } from './components/VideoModal';
-import { translations } from './translations';
-import { Language } from './types';
+import React, { useState, useEffect } from "react";
+import { Header } from "./components/Header";
+import { HeroSection } from "./components/HeroSection";
+import { DemoSection } from "./components/DemoSection";
+import { HowItWorksSection } from "./components/HowItWorksSection";
+import { ChatPreview } from "./components/ChatPreview";
+import { WhySastraSection } from "./components/WhySastraSection";
+import { MVPStatusSection } from "./components/MVPStatusSection";
+import { EarlyAccessSection } from "./components/EarlyAccessSection";
+import { Footer } from "./components/Footer";
+import { VideoModal } from "./components/VideoModal";
+import { translations } from "./translations";
+import { Language } from "./types";
 
 export default function App() {
   const [currentLang, setCurrentLang] = useState<Language>(() => {
     try {
-      const saved = localStorage.getItem('sastra_language');
-      if (saved === 'km' || saved === 'en') {
+      const saved = localStorage.getItem("sastra_language");
+      if (saved === "km" || saved === "en") {
         return saved;
       }
     } catch {
       // Fallback
     }
-    return 'en';
+    return "en";
   });
 
   const [isVideoModalOpen, setIsVideoModalOpen] = useState(false);
@@ -30,15 +30,15 @@ export default function App() {
   // Sync language with localStorage, html lang, and body class
   useEffect(() => {
     try {
-      localStorage.setItem('sastra_language', currentLang);
+      localStorage.setItem("sastra_language", currentLang);
     } catch {
       // Ignore
     }
     document.documentElement.lang = currentLang;
-    if (currentLang === 'km') {
-      document.body.classList.add('lang-km');
+    if (currentLang === "km") {
+      document.body.classList.add("lang-km");
     } else {
-      document.body.classList.remove('lang-km');
+      document.body.classList.remove("lang-km");
     }
   }, [currentLang]);
 
@@ -47,15 +47,15 @@ export default function App() {
   };
 
   const handleScrollToEarlyAccess = () => {
-    const el = document.getElementById('early-access');
+    const el = document.getElementById("early-access");
     if (el) {
       const yOffset = -40;
       const y = el.getBoundingClientRect().top + window.pageYOffset + yOffset;
-      window.scrollTo({ top: y, behavior: 'smooth' });
+      window.scrollTo({ top: y, behavior: "smooth" });
 
       // Focus email input after scroll
       setTimeout(() => {
-        const input = document.getElementById('early-access-email-input');
+        const input = document.getElementById("early-access-email-input");
         if (input) {
           input.focus();
         }
@@ -66,7 +66,9 @@ export default function App() {
   const t = translations[currentLang];
 
   return (
-    <div className={`min-h-screen bg-[#FAFBF7] flex flex-col ${currentLang === 'km' ? 'lang-km' : ''}`}>
+    <div
+      className={`min-h-screen bg-[#FAFBF7] flex flex-col ${currentLang === "km" ? "lang-km" : ""}`}
+    >
       {/* 1. Header with sticky nav and language switcher */}
       <Header
         currentLang={currentLang}
@@ -119,6 +121,7 @@ export default function App() {
         onClose={() => setIsVideoModalOpen(false)}
         currentLang={currentLang}
         t={t}
+        customVideoUrl="https://www.youtube.com/embed/yOUSuFMsljg?start=4"
       />
     </div>
   );
