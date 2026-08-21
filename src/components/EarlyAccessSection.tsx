@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import emailjs from '@emailjs/browser';
 import { Check, ArrowRight } from 'lucide-react';
 import { SectionLabel } from './SectionLabel';
 import { Language, TranslationContent } from '../types';
@@ -9,7 +10,6 @@ interface EarlyAccessSectionProps {
 }
 
 export const EarlyAccessSection: React.FC<EarlyAccessSectionProps> = ({
-  currentLang,
   t,
 }) => {
   const [email, setEmail] = useState('');
@@ -29,7 +29,7 @@ export const EarlyAccessSection: React.FC<EarlyAccessSectionProps> = ({
     }
   }, []);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setErrorMessage('');
 
@@ -41,39 +41,24 @@ export const EarlyAccessSection: React.FC<EarlyAccessSectionProps> = ({
 
     setIsSubmitting(true);
 
-    /**
-     * 💡 PRODUCTION API INTEGRATION:
-     * When ready to connect your live backend, replace this setTimeout block
-     * with your real API endpoint call, e.g.:
-     *
-     * await fetch('/api/early-access', {
-     *   method: 'POST',
-     *   headers: { 'Content-Type': 'application/json' },
-     *   body: JSON.stringify({ email: email.trim() })
-     * });
-     */
-    setTimeout(() => {
-      try {
-        const storedList = JSON.parse(
-          localStorage.getItem('sastra_early_access_emails') || '[]'
-        );
-        storedList.push({
+    try {
+      await emailjs.send(
+        import.meta.env.VITE_EMAILJS_SERVICE_ID,
+        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+        {
+          name: email.trim(),
           email: email.trim(),
-          timestamp: new Date().toISOString(),
-          language: currentLang,
-        });
-        localStorage.setItem(
-          'sastra_early_access_emails',
-          JSON.stringify(storedList)
-        );
-        localStorage.setItem('sastra_early_access_submitted', 'true');
-      } catch (err) {
-        console.warn('LocalStorage save failed:', err);
-      }
-
-      setIsSubmitting(false);
+        },
+        { publicKey: import.meta.env.VITE_EMAILJS_PUBLIC_KEY }
+      );
+      localStorage.setItem('sastra_early_access_submitted', 'true');
       setIsSubmitted(true);
-    }, 600);
+    } catch (err) {
+      console.warn('EmailJS send failed:', err);
+      setErrorMessage(t.earlyAccess.errorMessage);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
